@@ -10,23 +10,24 @@ import { ActivityIndicator, FlatList } from 'react-native'
 import { connect } from 'react-redux'
 import { Container, Content } from 'native-base'
 
-import FeedCard from '../components/FeedCard'
+import CattleCard from '../components/CattleCard'
 
-import GET_NEWS_QUERY from '../graphql/queries/getNews'
+import GET_DASHBOARDS from '../graphql/queries/getDashboards'
 
 class CattleScreen extends Component {
 
-_renderItem = ({ item }) => <FeedCard {...item}/>
+_renderItem = ({ item }) => <CattleCard {...item}/>
 
   render() {
-    const { data } = this.props;
-    console.log(data)
+    const { allDashboards } = this.props.data
+
+    
     return (
       <Container>
           <Content padder>
             <FlatList
             contentContainerStyle={{ alignSelf: 'stretch' }}
-            data={data.allPosts}
+            data={allDashboards}
             keyExtractor={item => item.id}
             renderItem={this._renderItem}
             />
@@ -36,8 +37,10 @@ _renderItem = ({ item }) => <FeedCard {...item}/>
   }
 }
 
-export default withApollo(
-  compose(connect(undefined), graphql(GET_NEWS_QUERY))(
-    CattleScreen,
-  ),
-)
+export default compose(connect(), graphql(GET_DASHBOARDS,{
+  options: (props)=>({
+    variables: {
+      locationName: props.navigation.state.routeName
+    }
+  })
+}))(CattleScreen)

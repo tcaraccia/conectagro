@@ -20,7 +20,6 @@ _renderItem = ({ item }) => <FeedCard {...item}/>
 
   render() {
     const { data } = this.props;
-    console.log(data)
     return (
       <Container>
           <Content padder>
@@ -36,8 +35,4 @@ _renderItem = ({ item }) => <FeedCard {...item}/>
   }
 }
 
-export default withApollo(
-  compose(connect(undefined), graphql(GET_NEWS_QUERY))(
-    HomeScreen,
-  ),
-)
+export default compose(connect(undefined), graphql(GET_NEWS_QUERY))(HomeScreen)
