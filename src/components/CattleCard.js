@@ -18,19 +18,10 @@ export default function CattleCard({ date, count, dashboardEntries }) {
             <CardItem>
                 <Left>
                     <Body>
-                        <Text>{Moment(date).format('LL')}</Text>
-                        <Text note>{date}</Text>
+                        <Text>{Moment(date).format('dddd, MMYY')}</Text> //FIXME: Fix Moment Text Formating.
                     </Body>
                 </Left>
                 <CardItem>
-                    <Body>
-                        <FlatList
-                        contentContainerStyle={{ alignSelf: 'stretch' }}
-                        data={dashboardEntries}
-                        keyExtractor={item => item.id}
-                        renderItem={this._renderItem}
-                        />
-                    </Body>
                 </CardItem>
                 <Right>
                     <Body>

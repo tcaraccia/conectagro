@@ -8,7 +8,7 @@ import React, { Component } from 'react'
 import { graphql, compose, withApollo } from 'react-apollo'
 import { ActivityIndicator, FlatList } from 'react-native'
 import { connect } from 'react-redux'
-import { Container, Content } from 'native-base'
+import { Container, Content, Spinner } from 'native-base'
 
 import CattleCard from '../components/CattleCard'
 
@@ -19,15 +19,23 @@ class CattleScreen extends Component {
 _renderItem = ({ item }) => <CattleCard {...item}/>
 
   render() {
-    const { allDashboards } = this.props.data
-
+    const { loading, error, dashboards } = this.props
     
+      if(loading){
+        return (
+          <Container>
+            <Content padder>
+              <Spinner/>
+            </Content>
+          </Container>
+        )
+      }
     return (
       <Container>
           <Content padder>
             <FlatList
             contentContainerStyle={{ alignSelf: 'stretch' }}
-            data={allDashboards}
+            data={dashboards}
             keyExtractor={item => item.id}
             renderItem={this._renderItem}
             />
@@ -42,5 +50,10 @@ export default compose(connect(), graphql(GET_DASHBOARDS,{
     variables: {
       locationName: props.navigation.state.routeName
     }
+  }),
+  props: ({ ownProps, data: { loading, error, allDashboards } }) => ({
+    loading: loading,
+    dashboards: allDashboards,
+    error: error,
   })
 }))(CattleScreen)

@@ -17,6 +17,7 @@ import GET_NEWS_QUERY from '../graphql/queries/getNews'
 class HomeScreen extends Component {
 
 _renderItem = ({ item }) => <FeedCard {...item}/>
+    //TODO: Implement Loading and Error Managment
 
   render() {
     const { data } = this.props;
