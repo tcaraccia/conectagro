@@ -32,9 +32,8 @@ _renderItem = ({ item }) => <CattleCard {...item}/>
       }
     return (
       <Container>
-          <Content padder>
+        <Content>
             <FlatList
-            contentContainerStyle={{ alignSelf: 'stretch' }}
             data={dashboards}
             keyExtractor={item => item.id}
             renderItem={this._renderItem}

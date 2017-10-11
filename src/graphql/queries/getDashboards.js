@@ -10,6 +10,7 @@ export default gql`
               priceDiff
               avgPrice
               name
+              quantity
             }
         }
     }`

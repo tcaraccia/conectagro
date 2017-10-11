@@ -8,10 +8,10 @@ import { Card, CardItem, Text, Left, Right,  Body,  } from 'native-base'
 import { Image } from 'react-native'
 import Moment from 'moment'
 
-export default function CattleCard({ name, qty, avgprice, pricediff }) {
+export default function CattleCard({ name, quantity, avgprice, pricediff }) {
     return (
-        <CardItem>
-            <Text>{name} </Text>
+        <CardItem cardBody>
+            <Text>{name} {quantity} </Text>
         </CardItem>
     )
 }
