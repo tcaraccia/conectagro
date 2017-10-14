@@ -4,18 +4,44 @@ import { StyleSheet } from 'react-native'
 import { colors } from '../constants'
 
   export default StyleSheet.create({
-    dashboardEntry: {
-        display:'flex',
-        justifyContent: 'space-between'        
+    card: {
+        backgroundColor: "#fff",
+        borderRadius: 2,
+        shadowColor: "#000000",
+        shadowOpacity: 0.3,
+        shadowRadius: 1,
+        shadowOffset: {
+          height: 1,
+          width: 0.3,
+        },
+        margin:5
     },
-    entryRow: {
-        flex: 1
-
+    cardHeader: {
+        flex: 1,
+        flexDirection: 'row',
+        padding: 16,
+        backgroundColor: colors.PRIMARY,
+        justifyContent:'space-between'
     },
-    entryHalfRow: {
-        flex: 2
+    cardColumns: {
+        flex: 1,
+        flexDirection: 'row',
+        padding: 16,
+        backgroundColor: colors.PRIMARY,
+        justifyContent:'space-around'
     },
-    cardheader: {
-        backgroundColor:colors.PRIMARY
+    cardContent: {
+        flex: 1,
+        flexDirection: 'row',
+        paddingRight: 16,
+        paddingLeft: 16,
+        paddingTop: 16,
+        paddingBottom: 16,
+        justifyContent:'space-around'
+    },
+    cardSeparator: {
+        flex: 1,
+        height: 1,
+        backgroundColor: '#E9E9E9'
     }
   })

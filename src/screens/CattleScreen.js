@@ -6,13 +6,12 @@
 
 import React, { Component } from 'react'
 import { graphql, compose, withApollo } from 'react-apollo'
-import { ActivityIndicator, FlatList } from 'react-native'
+import { ActivityIndicator, FlatList, View } from 'react-native'
 import { connect } from 'react-redux'
 import { Container, Content, Spinner } from 'native-base'
 
 import CattleCard from '../components/CattleCard'
-
-import GET_DASHBOARDS from '../graphql/queries/getDashboards'
+import GET_MARKET_DASHBOARDS from '../graphql/queries/getMarketDashboards'
 
 class CattleScreen extends Component {
 
@@ -31,28 +30,27 @@ _renderItem = ({ item }) => <CattleCard {...item}/>
         )
       }
     return (
-      <Container>
-        <Content>
-            <FlatList
+      <View>
+        <FlatList
+            contentContainerStyle={{ alignSelf: 'stretch' }}
             data={dashboards}
             keyExtractor={item => item.id}
             renderItem={this._renderItem}
             />
-        </Content>
-      </Container>
+      </View>
     );
   }
 }
 
-export default compose(connect(), graphql(GET_DASHBOARDS,{
+export default compose(connect(), graphql(GET_MARKET_DASHBOARDS,{
   options: (props)=>({
     variables: {
-      locationName: props.navigation.state.routeName
+      locationName: props.navigation.state.routeName.toUpperCase()
     }
   }),
-  props: ({ ownProps, data: { loading, error, allDashboards } }) => ({
+  props: ({ ownProps, data: { loading, error, allMarketDashboards } }) => ({
     loading: loading,
-    dashboards: allDashboards,
+    dashboards: allMarketDashboards,
     error: error,
   })
 }))(CattleScreen)

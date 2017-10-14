@@ -1,0 +1,98 @@
+type File implements Node {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  updatedAt: DateTime!
+  url: String! @isUnique
+}
+
+type Post implements Node {
+  createdAt: DateTime!
+  createdBy: String!
+  id: ID! @isUnique
+  title: String!
+  updatedAt: DateTime!
+  body: String
+  thumbnail: String
+  image: String
+}
+
+type User implements Node {
+  createdAt: DateTime!
+  id: ID! @isUnique
+  updatedAt: DateTime!
+}
+
+type Dashboard implements Node {
+  count: Int
+  createdAt: DateTime!
+  dashboardEntries: [DashboardEntry!]! @relation(name: "DasbhoardEntryOnDashboard")
+  dashboardType: DashboardType!
+  date: DateTime!
+  id: ID! @isUnique
+  location: Location @relation(name: "DashboardOnLocation")
+  updatedAt: DateTime!
+}
+
+type DashboardEntry implements Node {
+  quantity: Int!
+  avgPrice: Float!
+  dashboard: Dashboard @relation(name: "DasbhoardEntryOnDashboard")
+  id: ID! @isUnique
+  name: String!
+  priceDiff: Float @defaultValue(value: 0.0)
+}
+
+type Location implements Node {
+  createdAt: DateTime!
+  dashboards: [Dashboard!]! @relation(name: "DashboardOnLocation")
+  geo: String!
+  id: ID! @isUnique
+  name: String!
+  shortName: String @isUnique
+  updatedAt: DateTime!
+}
+
+enum DashboardType {
+  Cattle
+  Grain
+  Breed
+  Feeder
+}
+
+type MarketDashboard implements Node {
+  count: Int!
+  date: DateTime!
+  id: ID! @isUnique
+  nvlavg: Float!
+  nvlcount: Int!
+  nvlmax: Float!
+  nvltavg: Float!
+  nvltcount: Int!
+  nvltmax: Float!
+  vaqavg: Float!
+  vaqcount: Int!
+  vaqmax: Float!
+  vaqavg: Float!
+  vaqcount: Int!
+  vaqmax: Float!
+  teravg: Float!
+  tercount: Int!
+  termax: Float!
+  vacavg: Float!
+  vaccount: Int!
+  vacmax: Float!
+  conavg: Float!
+  concount: Int!
+  conmax: Float!
+  toravg: Float!
+  torcount: Int!
+  tormax: Float!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  location: Location @relation(name: "MarketDashboardOnLocation")
+
+}
