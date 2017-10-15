@@ -1,5 +1,5 @@
 /*
-* ConectAgro CattleScreen
+* ConectAgro MarketScreen
 * author: tcaraccia
 * https://github.com/tcaraccia/conectagro
 */
@@ -13,7 +13,7 @@ import { Container, Content, Spinner } from 'native-base'
 import CattleCard from '../components/CattleCard'
 import GET_MARKET_DASHBOARDS from '../graphql/queries/getMarketDashboards'
 
-class CattleScreen extends Component {
+class MarketScreen extends Component {
 
 _renderItem = ({ item }) => <CattleCard {...item}/>
 
@@ -54,4 +54,4 @@ export default compose(connect(), graphql(GET_MARKET_DASHBOARDS,{
     dashboards: allMarketDashboards,
     error: error,
   })
-}))(CattleScreen)
+}))(MarketScreen)

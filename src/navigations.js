@@ -14,7 +14,7 @@ import { connect } from 'react-redux'
 import { MaterialCommunityIcons } from 'react-native-vector-icons'
 import { Constants} from 'expo'
 
-import CattleScreen from './screens/CattleScreen'
+import MarketScreen from './screens/MarketScreen'
 import FeedScreen from './screens/FeedScreen'
 
 import { colors } from './constants'
@@ -27,19 +27,19 @@ const TAB_ICON_SIZE = 25
 const CattleNav = TabNavigator(
   {
     Liniers: {
-      screen: CattleScreen,
+      screen: MarketScreen,
       navigationOptions: () => {
         headerTitle: 'Mercado de Liniers'
       }
     },
     Rosario: {
-      screen: CattleScreen,
+      screen: MarketScreen,
       navigationOptions: () => {
         headerTitle: 'Mercado de Rosario'
       }
     },
     Invernada: {
-      screen: CattleScreen,
+      screen: MarketScreen,
       navigationOptions: () => {
         headerTitle: 'Invernada'
       }
