@@ -19,16 +19,13 @@ import { colors } from '../constants'
     cardHeader: {
         flex: 1,
         flexDirection: 'row',
-        padding: 16,
         backgroundColor: colors.PRIMARY,
         justifyContent:'space-between'
     },
     cardColumns: {
         flex: 1,
         flexDirection: 'row',
-        padding: 16,
-        backgroundColor: colors.PRIMARY,
-        justifyContent:'space-around'
+        padding: 5,
     },
     cardContent: {
         flex: 1,
@@ -39,7 +36,7 @@ import { colors } from '../constants'
         paddingBottom: 16,
         justifyContent:'space-around'
     },
-    cardSeparator: {
+    rowSeparator: {
         flex: 1,
         height: 1,
         backgroundColor: '#E9E9E9'

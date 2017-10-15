@@ -46,7 +46,8 @@ export default compose(connect(), graphql(GET_MARKET_DASHBOARDS,{
   options: (props)=>({
     variables: {
       locationName: props.navigation.state.routeName.toUpperCase()
-    }
+    },
+    pollInterval: 20000
   }),
   props: ({ ownProps, data: { loading, error, allMarketDashboards } }) => ({
     loading: loading,
