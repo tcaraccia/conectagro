@@ -1,5 +1,5 @@
 /*
-* ConectAgro MarketScreen
+* ConectAgro GrowScreen
 * author: tcaraccia
 * https://github.com/tcaraccia/conectagro
 */
@@ -10,17 +10,16 @@ import { ActivityIndicator, FlatList, View } from 'react-native'
 import { connect } from 'react-redux'
 import { Container, Content, Spinner } from 'native-base'
 
-import CattleCard from '../components/CattleCard'
-import GET_MARKET_DASHBOARDS from '../graphql/queries/getMarketDashboards'
-
+import GrowCard from '../components/GrowCard'
+import GET_GROW_DASHBOARDS from '../graphql/queries/getGrowDashboards'
 
 /**
  * TODO: Handle Errors 
  */
 
-class MarketScreen extends Component {
+class GrowScreen extends Component {
 
-_renderItem = ({ item }) => <CattleCard {...item}/>
+_renderItem = ({ item }) => <GrowCard {...item}/>
 
   render() {
     const { loading, error, dashboards } = this.props
@@ -36,7 +35,7 @@ _renderItem = ({ item }) => <CattleCard {...item}/>
       }
     return (
         <FlatList
-            contentContainerStyle={{ alignSelf: 'stretch' }}
+            contentContainerStyle={{ alignContent: 'stretch' }}
             data={dashboards}
             keyExtractor={item => item.id}
             renderItem={this._renderItem}
@@ -45,16 +44,13 @@ _renderItem = ({ item }) => <CattleCard {...item}/>
   }
 }
 
-export default compose(connect(), graphql(GET_MARKET_DASHBOARDS,{
+export default compose(connect(), graphql(GET_GROW_DASHBOARDS,{
   options: (props)=>({
-    variables: {
-      locationName: props.navigation.state.routeName.toUpperCase()
-    },
     pollInterval: 20000
   }),
-  props: ({ ownProps, data: { loading, error, allMarketDashboards } }) => ({
+  props: ({ ownProps, data: { loading, error, allGrowDashboards } }) => ({
     loading: loading,
-    dashboards: allMarketDashboards,
+    dashboards: allGrowDashboards,
     error: error,
   })
-}))(MarketScreen)
+}))(GrowScreen)

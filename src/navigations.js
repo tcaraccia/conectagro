@@ -16,6 +16,7 @@ import { Constants} from 'expo'
 
 import MarketScreen from './screens/MarketScreen'
 import FeedScreen from './screens/FeedScreen'
+import GrowScreen from './screens/GrowScreen'
 
 import { colors } from './constants'
 
@@ -39,7 +40,7 @@ const CattleNav = TabNavigator(
       }
     },
     Invernada: {
-      screen: MarketScreen,
+      screen: GrowScreen,
       navigationOptions: () => {
         headerTitle: 'Invernada'
       }

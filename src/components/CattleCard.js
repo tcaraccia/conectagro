@@ -10,6 +10,10 @@ import Moment from 'moment'
 import ComponentStyles from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
+/**
+ * FIXME: The CardColumns Style seems to be trimming text and looks bad on android.
+ * TODO: Check if styles in Android can be fixed.
+ */
 
 export default  class CattleCard extends Component{
     constructor(props){
@@ -59,7 +63,7 @@ export default  class CattleCard extends Component{
                         <Text>{Moment(date).format('dddd  D MMMM  YYYY')}</Text>
                         <Text>Entrada {count}</Text>
                     </CardItem>
-                    <Separator style={ComponentStyles.cardColumns} bordered>
+                    <Separator style={{flex:5, flexDirection: 'row'}}bordered>
                         <Text style={{flex:2}}>Categoria</Text>
                         <Text style={{flex:1}}>Max</Text>
                         <Text style={{flex:1}}>Prom</Text>
