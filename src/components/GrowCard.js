@@ -10,7 +10,6 @@ import Moment from 'moment'
 import ComponentStyles from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-
 export default  class GrowCard extends Component{
     constructor(props){
         super(props)
@@ -40,10 +39,10 @@ export default  class GrowCard extends Component{
         } = this.props
                 
         return (
-                <Card dividerStyle={ComponentStyles.rowSeparator}>
+                <Card containerStyle={ComponentStyles.card} dividerStyle={ComponentStyles.rowSeparator}>
                     <View style={ComponentStyles.cardHeader}>
-                    <Text style={{fontSize:20}}>{location}</Text>
-                    <Text style={{fontSize:15}}>{Moment(date).format('dddd  D MMMM  YYYY')}</Text>
+                        <Text style={{fontSize:20}}>{Moment(date).format('dddd  D MMMM  YYYY')}</Text>
+                        <Text style={{fontSize:15}}>{location}</Text>
                     </View>
                     <View style={ComponentStyles.cardContent}>
                         <Text style={{flex:4}}>Terneros 160 Kgs</Text>

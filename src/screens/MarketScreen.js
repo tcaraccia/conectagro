@@ -10,7 +10,7 @@ import { ActivityIndicator, FlatList, View } from 'react-native'
 import { connect } from 'react-redux'
 import { Container, Content, Spinner } from 'native-base'
 
-import CattleCard from '../components/CattleCard'
+import MarketCard from '../components/MarketCard'
 import GET_MARKET_DASHBOARDS from '../graphql/queries/getMarketDashboards'
 
 
@@ -20,7 +20,7 @@ import GET_MARKET_DASHBOARDS from '../graphql/queries/getMarketDashboards'
 
 class MarketScreen extends Component {
 
-_renderItem = ({ item }) => <CattleCard {...item}/>
+_renderItem = ({ item }) => <MarketCard {...item}/>
 
   render() {
     const { loading, error, dashboards } = this.props

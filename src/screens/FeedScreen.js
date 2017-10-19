@@ -14,11 +14,12 @@ import FeedCard from '../components/FeedCard'
 
 import GET_NEWS_QUERY from '../graphql/queries/getNews'
 
-class HomeScreen extends Component {
+class FeedScreen extends Component {
 
 _renderItem = ({ item }) => <FeedCard {...item}/>
     //TODO: Implement Loading and Error Managment
-
+    //TODO: Refactor props as in MarketCard
+    //TODO: Research add to calendar if date present.
   render() {
     const { data } = this.props;
     return (
@@ -36,4 +37,4 @@ _renderItem = ({ item }) => <FeedCard {...item}/>
   }
 }
 
-export default compose(connect(undefined), graphql(GET_NEWS_QUERY))(HomeScreen)
+export default compose(connect(), graphql(GET_NEWS_QUERY))(FeedScreen)
