@@ -1,4 +1,4 @@
-type File implements Node {
+type File @model {
   contentType: String!
   createdAt: DateTime!
   id: ID! @isUnique
@@ -9,7 +9,7 @@ type File implements Node {
   url: String! @isUnique
 }
 
-type Post implements Node {
+type Post @model {
   createdAt: DateTime!
   createdBy: String!
   id: ID! @isUnique
@@ -20,50 +20,13 @@ type Post implements Node {
   image: String
 }
 
-type User implements Node {
+type User @model {
   createdAt: DateTime!
   id: ID! @isUnique
   updatedAt: DateTime!
 }
 
-type Dashboard implements Node {
-  count: Int
-  createdAt: DateTime!
-  dashboardEntries: [DashboardEntry!]! @relation(name: "DasbhoardEntryOnDashboard")
-  dashboardType: DashboardType!
-  date: DateTime!
-  id: ID! @isUnique
-  location: Location @relation(name: "DashboardOnLocation")
-  updatedAt: DateTime!
-}
-
-type DashboardEntry implements Node {
-  quantity: Int!
-  avgPrice: Float!
-  dashboard: Dashboard @relation(name: "DasbhoardEntryOnDashboard")
-  id: ID! @isUnique
-  name: String!
-  priceDiff: Float @defaultValue(value: 0.0)
-}
-
-type Location implements Node {
-  createdAt: DateTime!
-  dashboards: [Dashboard!]! @relation(name: "DashboardOnLocation")
-  geo: String!
-  id: ID! @isUnique
-  name: String!
-  shortName: String @isUnique
-  updatedAt: DateTime!
-}
-
-enum DashboardType {
-  Cattle
-  Grain
-  Breed
-  Feeder
-}
-
-type MarketDashboard implements Node {
+type MarketDashboard @model {
   count: Int!
   date: DateTime!
   id: ID! @isUnique
@@ -73,9 +36,6 @@ type MarketDashboard implements Node {
   nvltavg: Float!
   nvltcount: Int!
   nvltmax: Float!
-  vaqavg: Float!
-  vaqcount: Int!
-  vaqmax: Float!
   vaqavg: Float!
   vaqcount: Int!
   vaqmax: Float!
@@ -93,6 +53,34 @@ type MarketDashboard implements Node {
   tormax: Float!
   createdAt: DateTime!
   updatedAt: DateTime!
-  location: Location @relation(name: "MarketDashboardOnLocation")
+  location: MarketLocation!
+}
 
+type GrowDashboard @model {
+  id: ID! @isUnique
+  date: DateTime!
+  tero160: Float!
+  tero180: Float!
+  tero200: Float!
+  nov230: Float!
+  nov260: Float!
+  nov300: Float!
+  tera0: Float!
+  tera150: Float!
+  tera190: Float!
+  vaq210: Float!
+  vaq250: Float!
+  vaqpren: Float!
+  vacnuepren: Float!
+  vacusdpren: Float!
+  vacnuecri: Float!
+  vacusdcri: Float!
+  location: String!
+  seller: String!
+  tero0: Float
+}
+
+enum MarketLocation {
+  LINIERS
+  ROSARIO
 }
