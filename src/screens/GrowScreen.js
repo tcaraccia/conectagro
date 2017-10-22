@@ -11,11 +11,9 @@ import { connect } from 'react-redux'
 import { Container, Content, Spinner } from 'native-base'
 
 import GrowCard from '../components/GrowCard'
+import Error from '../components/Error'
 import GET_GROW_DASHBOARDS from '../graphql/queries/getGrowDashboards'
 
-/**
- * TODO: Handle Errors 
- */
 
 class GrowScreen extends Component {
 
@@ -33,6 +31,16 @@ _renderItem = ({ item }) => <GrowCard {...item}/>
           </Container>
         )
       }
+      if(error) {
+        return (
+          <Container>
+            <Content padder>
+              <Error/>
+            </Content>
+          </Container>
+        )
+      }
+      
     return (
         <FlatList
             contentContainerStyle={{ alignContent: 'stretch' }}

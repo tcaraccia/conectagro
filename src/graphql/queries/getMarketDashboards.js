@@ -2,7 +2,7 @@ import { gql } from 'react-apollo'
 
 export default gql`
     query dashboardsByMarket($locationName:MarketLocation!){
-        allMarketDashboards(filter:{location:$locationName}){
+        allMarketDashboards(filter:{location:$locationName},orderBy: date_DESC){
         id
         date
         count

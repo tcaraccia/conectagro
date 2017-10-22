@@ -4,6 +4,11 @@ import { StyleSheet,Dimensions} from 'react-native'
 import { colors } from '../constants'
 
   export default StyleSheet.create({
+
+    /**
+     * Pure Card Component Style.
+     */
+
     card: {
         padding:0
     },
@@ -37,5 +42,18 @@ import { colors } from '../constants'
         flex: 1,
         height: 1,
         backgroundColor: 'grey'
+    },
+
+    /**
+     * Error Style.
+     */
+
+    error: {
+        alignItems:'center',
+        justifyContent: 'center'
+    },
+    errorText: {
+        fontSize: 22,
+        color: colors.LIGHT_GRAY
     }
   })

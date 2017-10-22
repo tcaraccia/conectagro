@@ -2,7 +2,7 @@ import { gql } from 'react-apollo'
 
 export default gql`
     query growDashboards {
-        allGrowDashboards {
+        allGrowDashboards(orderBy: date_DESC){
             id
             date
             location

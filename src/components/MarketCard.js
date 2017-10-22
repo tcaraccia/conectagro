@@ -10,7 +10,6 @@ import Moment from 'moment'
 import ComponentStyles from './styles'
 
 /**
- * FIXME: The CardColumns Style seems to be trimming text and looks bad on android.
  * TODO: Check if styles in Android can be fixed.
  */
 
