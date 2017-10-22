@@ -12,54 +12,19 @@ import {
 } from 'react-navigation'
 import { connect } from 'react-redux'
 import { MaterialCommunityIcons } from 'react-native-vector-icons'
-import { Constants} from 'expo'
+import { Constants } from 'expo'
 
-import MarketScreen from './screens/MarketScreen'
+import { CattleNav } from './navigations/CattleNav'
+import { CropNav } from './navigations/CropNav'
+
 import FeedScreen from './screens/FeedScreen'
-import GrowScreen from './screens/GrowScreen'
+
 
 import { colors } from './constants'
 
 const TAB_ICON_SIZE = 25
 
-/**
- * Cattle Navigator. Idealy would like to generate this dynamically from graphql query locations that go to dashboard.
- */
-const CattleNav = TabNavigator(
-  {
-    Liniers: {
-      screen: MarketScreen,
-      navigationOptions: () => {
-        headerTitle: 'Mercado de Liniers'
-      }
-    },
-    Rosario: {
-      screen: MarketScreen,
-      navigationOptions: () => {
-        headerTitle: 'Mercado de Rosario'
-      }
-    },
-    Invernada: {
-      screen: GrowScreen,
-      navigationOptions: () => {
-        headerTitle: 'Invernada'
-      }
-    }
-  },
-  {
-    lazy:true,
-    tabBarPosition : 'top',
-    swipeEnabled: true,
-    animationEnabled: true,
-    tabBarOptions: {
-      showIcon : false,
-      showLabel : true,
-      activeTintColor: colors.PRIMARY,
-      inactiveTintColor: colors.LIGHT_GRAY,
-      labelStyle: { fontSize:15 }
-    }
-  }
-)
+
 
 const TabMainNav = TabNavigator(
   {
@@ -80,8 +45,8 @@ const TabMainNav = TabNavigator(
       }),
       
     },
-    Notifications: {
-      screen: FeedScreen,
+    Crop: {
+      screen: CropNav,
       navigationOptions: () => ({
         headerTitle: 'Granos',
         tabBarIcon: ({ tintColor }) =>
