@@ -37,7 +37,7 @@ export default  class CropCard extends Component{
                     </View>
                     <Divider/>
                     <View style={ComponentStyles.cardContent}>
-                        <Text style={{flex:4}}>maiz</Text>
+                        <Text style={{flex:4}}>Maiz</Text>
                         <Text style={{flex:1}}>{maiz}</Text>
                     </View>
                     <Divider/>
